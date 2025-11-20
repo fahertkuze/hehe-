@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Kode Jebakan</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #0F0;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .console {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .error {
+            color: #F00; /* Merah untuk pesan kesalahan */
+            font-weight: bold;
+        }
+        .alert {
+            color: #FF0; /* Kuning untuk peringatan */
+        }
+        .notepad-window {
+            position: fixed;
+            width: 250px;
+            height: 150px;
+            background-color: #FFF;
+            border: 2px solid #000;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            color: #000;
+            z-index: 100;
+            cursor: move;
+            display: none; /* Sembunyikan secara default */
+        }
+    </style>
+</head>
+<body>
+    <div id="console-output" class="console"></div>
+
+    <div id="notepad-1" class="notepad-window" style="top: 50px; left: 50px;">
+        Notepad.exe [Simulasi 1]<br>
+        -------------------------<br>
+        File: C:\System\Infection.txt
+    </div>
+    <div id="notepad-2" class="notepad-window" style="top: 80px; left: 150px;">
+        Notepad.exe [Simulasi 2]<br>
+        -------------------------<br>
+        Initializing malware...
+    </div>
+    <div id="notepad-3" class="notepad-window" style="top: 110px; left: 250px;">
+        Notepad.exe [Simulasi 3]<br>
+        -------------------------<br>
+        Access Denied.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+document.addEventListener('DOMContentLoaded', () => {
+    const output = document.getElementById('console-output');
+    
+    // Fungsi untuk mensimulasikan tampilan output konsol
+    const log = (message, className = '') => {
+        output.innerHTML += `<span class="${className}">${message}</span>\n`;
+        output.scrollTop = output.scrollHeight;
+    };
+
+    // --- Simulasi Perintah system("start notepad.exe") ---
+    log("Initializing system check...", "alert");
+
+    const notepads = ['notepad-1', 'notepad-2', 'notepad-3'];
+    notepads.forEach((id, index) => {
+        setTimeout(() => {
+            const notepad = document.getElementById(id);
+            notepad.style.display = 'block';
+            log(`Opening notepad.exe (Simulasi ${index + 1})`, "alert");
+        }, 500 + index * 500); // Munculkan jendela berturut-turut
+    });
+
+    // --- Simulasi Pesan ALERT ---
+    setTimeout(() => {
+        log("\nALERT: VIRUS DETECTED! Your system is being infected!", "error");
+    }, 2500);
+
+    // --- Simulasi Runtime Error: Division by Zero ---
+    setTimeout(() => {
+        log("\nIntentional runtime error: Division by zero", "alert");
+        log("int a = 10; int b = 0; int result = a / b;", "alert");
+        // Di JavaScript, 10/0 menghasilkan Infinity, bukan crash.
+        // Kita simulasikan perilaku crash/error C++.
+        log("Runtime Error (Fatal): SIGFPE - Floating point exception (Division by zero)", "error");
+        // Kode C++ akan berhenti di sini. Kita lanjutkan simulasinya untuk demonstrasi.
+    }, 4000);
+    
+    // --- Simulasi Syntax Error ---
+    setTimeout(() => {
+        log("\nSyntax error: Missing semicolon", "alert");
+        log("std::cout << \"This line is missing a semicolon\"", "error");
+        log("Compilation Failed: Expected ';' before 'std::cout'", "error");
+    }, 5500);
+
+    // --- Simulasi Undefined Variable Error ---
+    setTimeout(() => {
+        log("\nUndefined variable error", "alert");
+        log("; std::cout << \"Undefined variable: \" << 'undefined_var' << std::endl;", "error");
+        log("Compilation Failed: 'undefined_var' was not declared in this scope", "error");
+    }, 7000);
+
+    // --- Simulasi Infinite Loop ---
+    // Jangan jalankan 'while(true)' di JS utama, karena akan membekukan seluruh browser.
+    // Kita simulasikan dampak visualnya.
+    setTimeout(() => {
+        log("\nWARNING: Infinite loop initiated!", "error");
+        
+        let loopCount = 0;
+        const infiniteLoopSim = setInterval(() => {
+            log(`System overload! Infinite loop initiated! (${loopCount})`);
+            loopCount++;
+            
+            // Batasi pengulangan agar tidak benar-benar membekukan browser
+            if (loopCount > 20) {
+                clearInterval(infiniteLoopSim);
+                log("\n--- SIMULASI SELESAI. Refresh untuk mengulang. ---", "alert");
+            }
+        }, 100); // Menampilkan output cepat untuk simulasi overload
+    }, 8500);
+});
