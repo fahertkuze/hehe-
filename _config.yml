@@ -48,6 +48,7 @@ exclude:
   - Gemfile.lock
   - cosmos
   - vendor
+  - claude
 
 # Lisensi bawaan untuk semua karya di arsip (bisa diganti per karya
 # dengan kolom "lisensi" di file penelitian). Kosongkan jika tidak ingin ditampilkan.
