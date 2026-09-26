@@ -11,7 +11,7 @@ lokasi: "Bandung, Indonesia"
 
 # Foto profil: taruh file di assets/img/ lalu tulis namanya, mis. "assets/img/foto.jpg".
 # Jika dikosongkan, akan tampil inisial nama.
-foto: ""
+foto: "assets/img/foto kossmi.jpeg
 
 # Kalimat singkat di bagian atas Beranda (1–2 kalimat).
 tagline: "Meneliti bagaimana data dan teknologi dapat membantu masyarakat menghadapi risiko lingkungan."
