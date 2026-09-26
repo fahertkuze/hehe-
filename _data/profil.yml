@@ -3,11 +3,11 @@
 #  Kosongkan ("") atau hapus baris yang tidak ingin ditampilkan.
 # ============================================================
 
-nama: "Nama Lengkap Anda"
-gelar: "S.Si., M.Sc."               # gelar akademik (opsional)
-jabatan: "Peneliti & Dosen"
-afiliasi: "Nama Universitas / Lembaga"
-lokasi: "Bandung, Indonesia"
+nama: "Muhammad Farhan H"
+gelar:                # gelar akademik (opsional)
+jabatan: "Peneliti & Tutor"
+afiliasi: "MAN INSAN CENDEKIA GORONTALO"
+lokasi: "Makassar, Sulawesi Selatan"
 
 # Foto profil: taruh file di assets/img/ lalu tulis namanya, mis. "assets/img/foto.jpg".
 # Jika dikosongkan, akan tampil inisial nama.
