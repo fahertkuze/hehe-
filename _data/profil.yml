@@ -5,7 +5,7 @@
 
 nama: "Muhammad Farhan H"
 gelar:                # gelar akademik (opsional)
-jabatan: "Peneliti & Tutor"
+jabatan: "Researcher & Tutor"
 afiliasi: "MAN INSAN CENDEKIA GORONTALO"
 lokasi: "Makassar, Sulawesi Selatan"
 
@@ -14,16 +14,15 @@ lokasi: "Makassar, Sulawesi Selatan"
 foto: ""
 
 # Kalimat singkat di bagian atas Beranda (1–2 kalimat).
-tagline: "Meneliti bagaimana data dan teknologi dapat membantu masyarakat menghadapi risiko lingkungan."
+tagline: "to research how the universe works through the principles of physics and astronomy."
 
 # Biografi singkat (boleh beberapa paragraf, pisahkan dengan baris kosong).
 bio: |
-  Saya adalah peneliti yang berfokus pada analisis data lingkungan, pemodelan risiko bencana,
-  dan pemanfaatan pembelajaran mesin untuk kebijakan publik. Saat ini saya bekerja di
-  Nama Universitas / Lembaga.
+  I am a student who is very intrested in astrophysics and cosmology. i am currently conducting 
+  research in gravitational anomalies that unlock mysteries. Can we localize gravity ?
 
-  Situs ini berisi CV saya serta arsip terbuka penelitian — makalah, dataset, dan presentasi —
-  yang dapat dibaca, diunduh, dan disitasi oleh siapa saja.
+  This site contains my resume and an open-access archive of my research—papers, datasets, and presentations—
+  which anyone can read, download, and cite..
 
 # Nama Anda seperti tertulis di daftar penulis publikasi. Nama yang cocok akan
 # ditebalkan. Jika dikosongkan, dipakai "nama" di atas.
