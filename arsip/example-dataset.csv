@@ -1,0 +1,7 @@
+date,regency,rainfall_mm,source
+2023-01-01,Bandung Regency,12.4,station
+2023-01-01,Bandung City,9.8,station
+2023-01-01,Bogor Regency,21.0,CHIRPS-corrected
+2023-01-02,Bandung Regency,0.0,station
+2023-01-02,Bandung City,1.2,station
+2023-01-02,Bogor Regency,5.6,CHIRPS-corrected

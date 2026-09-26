@@ -1,17 +1,17 @@
 {%- assign profil = site.data.profil -%}
 {%- assign kata = profil.nama | split: " " -%}
-<a class="lewati" href="#konten">Langsung ke konten</a>
+<a class="lewati" href="#konten">Skip to content</a>
 <header class="kepala">
   <div class="wadah kepala__isi">
-    <a class="merek" href="{{ '/' | relative_url }}" aria-label="Beranda — {{ profil.nama | escape }}">
+    <a class="merek" href="{{ '/' | relative_url }}" aria-label="Home — {{ profil.nama | escape }}">
       <span class="merek__monogram" aria-hidden="true">{{ kata.first | slice: 0 }}{% if kata.size > 1 %}{{ kata.last | slice: 0 }}{% endif %}</span>
       <span class="merek__nama">{{ profil.nama }}</span>
     </a>
-    <nav class="navigasi" aria-label="Navigasi utama">
-      <a href="{{ '/' | relative_url }}" {% if page.url == "/" %}aria-current="page"{% endif %}>Beranda</a>
-      <a href="{{ '/penelitian/' | relative_url }}" {% if page.url contains "/penelitian/" %}aria-current="page"{% endif %}>Penelitian</a>
+    <nav class="navigasi" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/research/' | relative_url }}" {% if page.url contains "/research/" %}aria-current="page"{% endif %}>Research</a>
       <a href="{{ '/cv/' | relative_url }}" {% if page.url == "/cv/" %}aria-current="page"{% endif %}>CV</a>
-      <button class="tombol-tema" type="button" data-tombol-tema aria-label="Ganti tema terang/gelap" title="Ganti tema">
+      <button class="tombol-tema" type="button" data-tombol-tema aria-label="Toggle light/dark theme" title="Toggle theme">
         <span class="tombol-tema__terang">{% include ikon.html n="moon" %}</span>
         <span class="tombol-tema__gelap">{% include ikon.html n="sun" %}</span>
       </button>

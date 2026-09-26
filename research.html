@@ -1,0 +1,63 @@
+---
+layout: default
+title: Research
+permalink: /research/
+deskripsi: "An open archive of research papers, datasets, and presentations — free to read, download, share, and cite."
+---
+{%- assign semua = site.penelitian | sort: "tahun" | reverse -%}
+{%- assign daftar_tahun = site.penelitian | map: "tahun" | uniq | sort | reverse -%}
+
+<section class="wadah arsip">
+  <header class="judul-halaman">
+    <p class="alis">Open archive</p>
+    <h1>Research</h1>
+    <p class="judul-halaman__lead">My papers, datasets, and presentations. Everything here is open to the public — feel free to read, download, share, and cite it.</p>
+  </header>
+
+  <div class="saring" data-saring>
+    <label class="cari">
+      <span class="sr">Search the archive</span>
+      {% include ikon.html n="search" %}
+      <input type="search" placeholder="Search titles, authors, keywords…" autocomplete="off" data-input-cari>
+      <kbd aria-hidden="true">/</kbd>
+    </label>
+    <div class="saring__baris">
+      <div class="chip-grup" role="group" aria-label="Filter by type">
+        <button class="chip" type="button" aria-pressed="true" data-jenis-filter="">All <span class="chip__n">{{ site.penelitian | size }}</span></button>
+        {%- for j in site.data.jenis %}
+        {%- assign n = site.penelitian | where: "jenis", j[0] | size %}
+        {%- if n > 0 %}
+        <button class="chip" type="button" aria-pressed="false" data-jenis-filter="{{ j[0] }}"><span class="titik" data-jenis="{{ j[0] }}"></span>{{ j[1].label }} <span class="chip__n">{{ n }}</span></button>
+        {%- endif %}
+        {%- endfor %}
+      </div>
+      <div class="saring__pilih">
+        <label><span class="sr">Year</span>
+          <select data-tahun-filter>
+            <option value="">All years</option>
+            {%- for t in daftar_tahun %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+          </select>
+        </label>
+        <label><span class="sr">Sort by</span>
+          <select data-urut>
+            <option value="baru">Newest first</option>
+            <option value="lama">Oldest first</option>
+            <option value="judul">Title A–Z</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <p class="saring__hasil" data-jumlah aria-live="polite">{{ site.penelitian | size }} {% if site.penelitian.size == 1 %}work{% else %}works{% endif %}</p>
+  </div>
+
+  <div class="daftar-karya daftar-karya--arsip" data-daftar>
+    {%- for p in semua %}
+    {% include kartu-penelitian.html p=p kata_kunci=true %}
+    {%- endfor %}
+  </div>
+
+  <div class="kosong" data-kosong hidden>
+    <p>Nothing matches your search.</p>
+    <button class="tombol" type="button" data-reset>{% include ikon.html n="x-circle" %}Clear all filters</button>
+  </div>
+</section>

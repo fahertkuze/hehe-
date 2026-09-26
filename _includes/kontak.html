@@ -1,8 +1,8 @@
 {%- comment -%}
-  Daftar ikon tautan kontak. Parameter opsional: kelas="..."
+  Contact links with icons. Optional parameter: kelas="..."
 {%- endcomment -%}
 {%- assign k = site.data.profil.kontak -%}
-{%- assign label_kontak = "email:Email|orcid:ORCID|scholar:Google Scholar|researchgate:ResearchGate|sinta:SINTA|github:GitHub|linkedin:LinkedIn|website:Situs web" | split: "|" -%}
+{%- assign label_kontak = "email:Email|orcid:ORCID|scholar:Google Scholar|researchgate:ResearchGate|sinta:SINTA|github:GitHub|linkedin:LinkedIn|website:Website" | split: "|" -%}
 <ul class="kontak {{ include.kelas }}">
   {%- for pasangan in label_kontak -%}
     {%- assign bagian = pasangan | split: ":" -%}
@@ -10,7 +10,7 @@
     {%- assign nilai = k[kunci] -%}
     {%- if nilai and nilai != "" -%}
     <li>
-      <a href="{% if kunci == 'email' %}mailto:{{ nilai }}{% else %}{{ nilai }}{% endif %}" {% unless kunci == 'email' %}target="_blank" rel="noopener me"{% endunless %} aria-label="{{ bagian[1] }}" title="{{ bagian[1] }}">
+      <a href="{% if kunci == 'email' %}mailto:{{ nilai }}{% else %}{% unless nilai contains '://' %}https://{% endunless %}{{ nilai }}{% endif %}" {% unless kunci == 'email' %}target="_blank" rel="noopener me"{% endunless %} aria-label="{{ bagian[1] }}" title="{{ bagian[1] }}">
         {% include ikon.html n=kunci %}<span class="kontak__label">{% if kunci == 'email' %}{{ nilai }}{% else %}{{ bagian[1] }}{% endif %}</span>
       </a>
     </li>

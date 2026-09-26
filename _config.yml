@@ -5,9 +5,10 @@
 #  secara otomatis (tunggu ±1 menit).
 # ============================================================
 
-title: "Nama Anda"
-description: "Situs pribadi, CV, dan arsip penelitian terbuka."
-lang: id
+title: "Personal site"
+description: "Personal website, CV, and open research archive."
+# Bahasa situs (en = Inggris).
+lang: en
 
 # Alamat situs.
 # - Jika repositori bernama  <username>.github.io  → baseurl: ""
@@ -16,11 +17,12 @@ url: "https://fahertkuze.github.io"
 baseurl: "/hehe-"
 
 # Koleksi arsip penelitian: setiap file .md di folder _penelitian/
-# akan menjadi satu halaman dengan tautan permanen yang bisa dibagikan.
+# akan menjadi satu halaman dengan tautan permanen yang bisa dibagikan,
+# beralamat /research/<nama-file>/
 collections:
   penelitian:
     output: true
-    permalink: /penelitian/:name/
+    permalink: /research/:name/
 
 defaults:
   - scope:
