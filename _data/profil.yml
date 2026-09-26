@@ -18,11 +18,11 @@ tagline: "to research how the universe works through the principles of physics a
 
 # Biografi singkat (boleh beberapa paragraf, pisahkan dengan baris kosong).
 bio: |
-  I am a student who is very intrested in astrophysics and cosmology. i am currently conducting 
-  research in gravitational anomalies that unlock mysteries. Can we localize gravity ?
+  I am a student who is very interested in astrophysics and cosmology. I am currently conducting 
+  research in gravitational anomalies that unlock mysteries. Can we localize gravity?
 
   This site contains my resume and an open-access archive of my research—papers, datasets, and presentations—
-  which anyone can read, download, and cite..
+  which anyone can read, download, and cite.
 
 # Nama Anda seperti tertulis di daftar penulis publikasi. Nama yang cocok akan
 # ditebalkan. Jika dikosongkan, dipakai "nama" di atas.
@@ -30,11 +30,11 @@ bio: |
 nama_di_publikasi: []
 
 minat:
-  - Pemodelan Risiko Bencana
-  - Pembelajaran Mesin
-  - Sistem Informasi Geografis
-  - Kebijakan Lingkungan
-  - Sains Data Terbuka
+  - Astrophysics
+  - Cosmology
+  - Modern Physcics
+  - Data Analyze
+  - Observational Astronomy
 
 # File CV dalam PDF (opsional). Taruh di arsip/ lalu tulis path-nya, mis. "arsip/cv.pdf".
 # Jika kosong, tombol "Cetak / Simpan PDF" di halaman CV tetap bisa dipakai.
@@ -42,11 +42,11 @@ cv_pdf: ""
 
 # Tautan kontak & profil akademik. Hapus yang tidak dipakai.
 kontak:
-  email: "nama@email.com"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
-  scholar: "https://scholar.google.com/"
+  email: "farhan.herman441@gmail.com"
+  orcid: ""
+  scholar: ""
   researchgate: ""
   sinta: ""
   github: "https://github.com/fahertkuze"
-  linkedin: ""
+  linkedin: "www.linkedin.com/in/muhammad-farhan-h-6396472b6"
   website: ""
