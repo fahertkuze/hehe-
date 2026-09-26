@@ -14,10 +14,10 @@
 # ============================================================
 
 pendidikan:
-  - judul: "Program or Degree Name"
-    tempat: "School or University Name"
-    periode: "20XX – present"
-    keterangan: "Optional note, e.g. thesis title or honors."
+  - judul: "Science Program (Senior High School)"
+    tempat: "MAN Insan Cendekia Gorontalo"
+    periode: "2024 – 2027"
+    keterangan: "Astronomy Enthusiast & Founder of Pengamat Langit."
 
 pengalaman:
   - judul: "Position Title"
