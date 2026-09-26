@@ -1,0 +1,63 @@
+---
+layout: default
+title: Arsip Penelitian
+permalink: /penelitian/
+deskripsi: "Arsip terbuka makalah, dataset, dan presentasi penelitian — bebas dibaca, diunduh, dibagikan, dan disitasi."
+---
+{%- assign semua = site.penelitian | sort: "tahun" | reverse -%}
+{%- assign daftar_tahun = site.penelitian | map: "tahun" | uniq | sort | reverse -%}
+
+<section class="wadah arsip">
+  <header class="judul-halaman">
+    <p class="alis">Arsip terbuka</p>
+    <h1>Arsip Penelitian</h1>
+    <p class="judul-halaman__lead">Kumpulan makalah, dataset, dan presentasi saya. Semua karya di sini terbuka untuk publik: silakan baca, unduh, bagikan, dan sitasi.</p>
+  </header>
+
+  <div class="saring" data-saring>
+    <label class="cari">
+      <span class="sr">Cari di arsip</span>
+      {% include ikon.html n="search" %}
+      <input type="search" placeholder="Cari judul, penulis, kata kunci…" autocomplete="off" data-input-cari>
+      <kbd aria-hidden="true">/</kbd>
+    </label>
+    <div class="saring__baris">
+      <div class="chip-grup" role="group" aria-label="Saring berdasarkan jenis">
+        <button class="chip" type="button" aria-pressed="true" data-jenis-filter="">Semua <span class="chip__n">{{ site.penelitian | size }}</span></button>
+        {%- for j in site.data.jenis %}
+        {%- assign n = site.penelitian | where: "jenis", j[0] | size %}
+        {%- if n > 0 %}
+        <button class="chip" type="button" aria-pressed="false" data-jenis-filter="{{ j[0] }}"><span class="titik" data-jenis="{{ j[0] }}"></span>{{ j[1].label }} <span class="chip__n">{{ n }}</span></button>
+        {%- endif %}
+        {%- endfor %}
+      </div>
+      <div class="saring__pilih">
+        <label><span class="sr">Tahun</span>
+          <select data-tahun-filter>
+            <option value="">Semua tahun</option>
+            {%- for t in daftar_tahun %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+          </select>
+        </label>
+        <label><span class="sr">Urutkan</span>
+          <select data-urut>
+            <option value="baru">Terbaru</option>
+            <option value="lama">Terlama</option>
+            <option value="judul">Judul A–Z</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <p class="saring__hasil" data-jumlah aria-live="polite">{{ site.penelitian | size }} karya</p>
+  </div>
+
+  <div class="daftar-karya daftar-karya--arsip" data-daftar>
+    {%- for p in semua %}
+    {% include kartu-penelitian.html p=p kata_kunci=true %}
+    {%- endfor %}
+  </div>
+
+  <div class="kosong" data-kosong hidden>
+    <p>Tidak ada karya yang cocok dengan pencarian Anda.</p>
+    <button class="tombol" type="button" data-reset>{% include ikon.html n="x-circle" %}Hapus semua filter</button>
+  </div>
+</section>

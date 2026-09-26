@@ -1,0 +1,53 @@
+# ============================================================
+#  PROFIL — data utama yang tampil di Beranda, CV, dan kaki halaman.
+#  Kosongkan ("") atau hapus baris yang tidak ingin ditampilkan.
+# ============================================================
+
+nama: "Nama Lengkap Anda"
+gelar: "S.Si., M.Sc."               # gelar akademik (opsional)
+jabatan: "Peneliti & Dosen"
+afiliasi: "Nama Universitas / Lembaga"
+lokasi: "Bandung, Indonesia"
+
+# Foto profil: taruh file di assets/img/ lalu tulis namanya, mis. "assets/img/foto.jpg".
+# Jika dikosongkan, akan tampil inisial nama.
+foto: ""
+
+# Kalimat singkat di bagian atas Beranda (1–2 kalimat).
+tagline: "Meneliti bagaimana data dan teknologi dapat membantu masyarakat menghadapi risiko lingkungan."
+
+# Biografi singkat (boleh beberapa paragraf, pisahkan dengan baris kosong).
+bio: |
+  Saya adalah peneliti yang berfokus pada analisis data lingkungan, pemodelan risiko bencana,
+  dan pemanfaatan pembelajaran mesin untuk kebijakan publik. Saat ini saya bekerja di
+  Nama Universitas / Lembaga.
+
+  Situs ini berisi CV saya serta arsip terbuka penelitian — makalah, dataset, dan presentasi —
+  yang dapat dibaca, diunduh, dan disitasi oleh siapa saja.
+
+# Nama Anda seperti tertulis di daftar penulis publikasi. Nama yang cocok akan
+# ditebalkan. Jika dikosongkan, dipakai "nama" di atas.
+# Contoh: ["Nama Lengkap Anda", "N. L. Anda"]
+nama_di_publikasi: []
+
+minat:
+  - Pemodelan Risiko Bencana
+  - Pembelajaran Mesin
+  - Sistem Informasi Geografis
+  - Kebijakan Lingkungan
+  - Sains Data Terbuka
+
+# File CV dalam PDF (opsional). Taruh di arsip/ lalu tulis path-nya, mis. "arsip/cv.pdf".
+# Jika kosong, tombol "Cetak / Simpan PDF" di halaman CV tetap bisa dipakai.
+cv_pdf: ""
+
+# Tautan kontak & profil akademik. Hapus yang tidak dipakai.
+kontak:
+  email: "nama@email.com"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+  scholar: "https://scholar.google.com/"
+  researchgate: ""
+  sinta: ""
+  github: "https://github.com/fahertkuze"
+  linkedin: ""
+  website: ""

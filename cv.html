@@ -1,0 +1,102 @@
+---
+layout: default
+title: Curriculum Vitae
+permalink: /cv/
+kelas_body: halaman-cv
+---
+{%- assign profil = site.data.profil -%}
+{%- assign cv = site.data.cv -%}
+{%- assign k = profil.kontak -%}
+
+<article class="wadah cv">
+  <header class="cv__kepala">
+    <div>
+      <p class="alis">Curriculum Vitae</p>
+      <h1>{{ profil.nama }}{% if profil.gelar and profil.gelar != "" %}<span class="cv__gelar">, {{ profil.gelar }}</span>{% endif %}</h1>
+      <p class="cv__peran">{{ profil.jabatan }}{% if profil.afiliasi %} — {{ profil.afiliasi }}{% endif %}</p>
+    </div>
+    <div class="cv__aksi">
+      {%- if profil.cv_pdf and profil.cv_pdf != "" %}
+      <a class="tombol tombol--utama" href="{{ profil.cv_pdf | relative_url }}" download>{% include ikon.html n="download" %}Unduh CV (PDF)</a>
+      {%- endif %}
+      <button class="tombol {% unless profil.cv_pdf and profil.cv_pdf != '' %}tombol--utama{% endunless %}" type="button" data-cetak>{% include ikon.html n="printer" %}Cetak / Simpan PDF</button>
+    </div>
+    <ul class="cv__kontak">
+      {%- if profil.lokasi %}<li>{% include ikon.html n="pin" %}{{ profil.lokasi }}</li>{% endif %}
+      {%- if k.email and k.email != "" %}<li>{% include ikon.html n="email" %}<a href="mailto:{{ k.email }}">{{ k.email }}</a></li>{% endif %}
+      {%- if k.orcid and k.orcid != "" %}<li>{% include ikon.html n="orcid" %}<a href="{{ k.orcid }}">{{ k.orcid | remove: "https://" | remove: "http://" }}</a></li>{% endif %}
+      <li>{% include ikon.html n="globe" %}<a href="{{ '/' | absolute_url }}">{{ '/' | absolute_url | remove: "https://" | remove: "http://" }}</a></li>
+    </ul>
+  </header>
+
+  {%- if profil.bio %}
+  <section class="cv__bagian">
+    <h2 class="cv__judul">Profil</h2>
+    <div class="cv__isi prosa">{{ profil.bio | markdownify }}</div>
+  </section>
+  {%- endif %}
+
+  {%- assign bagian_cv = "pendidikan:Pendidikan|pengalaman:Pengalaman|penghargaan:Penghargaan & Hibah|organisasi:Organisasi" | split: "|" -%}
+  {%- for pasangan in bagian_cv %}
+  {%- assign b = pasangan | split: ":" %}
+  {%- assign kunci = b[0] %}
+  {%- assign item = cv[kunci] %}
+  {%- if item and item.size > 0 %}
+  <section class="cv__bagian">
+    <h2 class="cv__judul">{{ b[1] }}</h2>
+    <ol class="cv__isi cv-daftar">
+      {%- for x in item %}
+      <li class="cv-item">
+        <span class="cv-item__periode">{{ x.periode }}</span>
+        <div>
+          <p class="cv-item__judul">{{ x.judul }}</p>
+          {%- if x.tempat %}<p class="cv-item__tempat">{{ x.tempat }}</p>{% endif %}
+          {%- if x.keterangan %}<p class="cv-item__ket">{{ x.keterangan }}</p>{% endif %}
+          {%- if x.poin %}
+          <ul class="cv-item__poin">{% for t in x.poin %}<li>{{ t }}</li>{% endfor %}</ul>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endif %}
+  {%- endfor %}
+
+  {%- if site.penelitian.size > 0 %}
+  <section class="cv__bagian">
+    <h2 class="cv__judul">Publikasi &amp; Karya</h2>
+    <div class="cv__isi">
+      <p class="cv__catatan">Daftar ini diambil otomatis dari <a href="{{ '/penelitian/' | relative_url }}">arsip penelitian</a>.</p>
+      {%- for j in site.data.jenis %}
+      {%- assign karya = site.penelitian | where: "jenis", j[0] | sort: "tahun" | reverse %}
+      {%- if karya.size > 0 %}
+      <h3 class="cv__subjudul">{{ j[1].label }}</h3>
+      <ol class="cv-pub">
+        {%- for p in karya %}
+        <li>
+          {% include penulis.html daftar=p.penulis %} ({{ p.tahun }}).
+          <a href="{{ p.url | absolute_url }}">{{ p.judul }}</a>.{% if p.terbitan %} <em>{{ p.terbitan }}</em>.{% endif %}
+          {%- if p.doi and p.doi != "" %} <a class="mono" href="https://doi.org/{{ p.doi }}">doi:{{ p.doi }}</a>{% endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if cv.keahlian %}
+  <section class="cv__bagian">
+    <h2 class="cv__judul">Keahlian</h2>
+    <dl class="cv__isi cv-keahlian">
+      {%- for g in cv.keahlian %}
+      <div><dt>{{ g.kategori }}</dt><dd>{{ g.daftar | join: " · " }}</dd></div>
+      {%- endfor %}
+    </dl>
+  </section>
+  {%- endif %}
+
+  <p class="cv__diperbarui">Diperbarui {{ site.time | date: "%d-%m-%Y" }}</p>
+</article>

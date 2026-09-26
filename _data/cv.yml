@@ -1,0 +1,57 @@
+# ============================================================
+#  CV — setiap bagian akan tampil di halaman CV (urutan sesuai file ini).
+#  Hapus bagian yang tidak diperlukan, atau tambah item baru dengan
+#  menyalin pola yang sama.
+#
+#  Kolom umum per item:
+#    judul     : posisi / gelar / nama penghargaan
+#    tempat    : institusi / penyelenggara
+#    periode   : teks bebas, mis. "2021 – sekarang"
+#    keterangan: (opsional) penjelasan singkat
+#    poin      : (opsional) daftar butir
+# ============================================================
+
+pendidikan:
+  - judul: "Magister Sains (M.Sc.), Ilmu Lingkungan"
+    tempat: "Nama Universitas"
+    periode: "2019 – 2021"
+    keterangan: "Tesis: Pemodelan spasial risiko banjir berbasis data satelit."
+  - judul: "Sarjana Sains (S.Si.), Statistika"
+    tempat: "Nama Universitas"
+    periode: "2015 – 2019"
+    keterangan: "Lulus dengan predikat Cum Laude."
+
+pengalaman:
+  - judul: "Peneliti"
+    tempat: "Nama Lembaga Penelitian"
+    periode: "2022 – sekarang"
+    poin:
+      - "Memimpin proyek pemetaan risiko banjir di tiga provinsi."
+      - "Mengembangkan pipeline data terbuka untuk pemantauan kualitas air."
+  - judul: "Asisten Dosen"
+    tempat: "Nama Universitas"
+    periode: "2019 – 2021"
+    poin:
+      - "Mengajar praktikum Analisis Data Spasial dan Statistika Dasar."
+
+penghargaan:
+  - judul: "Hibah Penelitian Dosen Pemula"
+    tempat: "Kemendikbudristek"
+    periode: "2023"
+  - judul: "Presentasi Terbaik"
+    tempat: "Seminar Nasional Sains Data"
+    periode: "2022"
+
+organisasi:
+  - judul: "Anggota"
+    tempat: "Ikatan Peneliti Lingkungan Indonesia"
+    periode: "2020 – sekarang"
+
+# Keahlian dikelompokkan per kategori.
+keahlian:
+  - kategori: "Analisis Data"
+    daftar: ["Python", "R", "SQL", "Statistika Spasial"]
+  - kategori: "Perangkat"
+    daftar: ["QGIS", "Google Earth Engine", "Git", "LaTeX"]
+  - kategori: "Bahasa"
+    daftar: ["Indonesia (penutur asli)", "Inggris (profesional)"]
