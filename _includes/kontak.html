@@ -10,7 +10,7 @@
     {%- assign nilai = k[kunci] -%}
     {%- if nilai and nilai != "" -%}
     <li>
-      <a href="{% if kunci == 'email' %}mailto:{{ nilai }}{% else %}{{ nilai }}{% endif %}" {% unless kunci == 'email' %}target="_blank" rel="noopener me"{% endunless %} aria-label="{{ bagian[1] }}" title="{{ bagian[1] }}">
+      <a href="{% if kunci == 'email' %}mailto:{{ nilai }}{% else %}{% unless nilai contains '://' %}https://{% endunless %}{{ nilai }}{% endif %}" {% unless kunci == 'email' %}target="_blank" rel="noopener me"{% endunless %} aria-label="{{ bagian[1] }}" title="{{ bagian[1] }}">
         {% include ikon.html n=kunci %}<span class="kontak__label">{% if kunci == 'email' %}{{ nilai }}{% else %}{{ bagian[1] }}{% endif %}</span>
       </a>
     </li>

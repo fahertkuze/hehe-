@@ -24,7 +24,7 @@ kelas_body: halaman-cv
     <ul class="cv__kontak">
       {%- if profil.lokasi %}<li>{% include ikon.html n="pin" %}{{ profil.lokasi }}</li>{% endif %}
       {%- if k.email and k.email != "" %}<li>{% include ikon.html n="email" %}<a href="mailto:{{ k.email }}">{{ k.email }}</a></li>{% endif %}
-      {%- if k.orcid and k.orcid != "" %}<li>{% include ikon.html n="orcid" %}<a href="{{ k.orcid }}">{{ k.orcid | remove: "https://" | remove: "http://" }}</a></li>{% endif %}
+      {%- if k.orcid and k.orcid != "" %}<li>{% include ikon.html n="orcid" %}<a href="{% unless k.orcid contains '://' %}https://{% endunless %}{{ k.orcid }}">{{ k.orcid | remove: "https://" | remove: "http://" }}</a></li>{% endif %}
       <li>{% include ikon.html n="globe" %}<a href="{{ '/' | absolute_url }}">{{ '/' | absolute_url | remove: "https://" | remove: "http://" }}</a></li>
     </ul>
   </header>
