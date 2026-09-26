@@ -32,8 +32,8 @@ nama_di_publikasi: []
 minat:
   - Astrophysics
   - Cosmology
-  - Modern Physcics
-  - Data Analyze
+  - Modern Physics
+  - Data Analysis
   - Observational Astronomy
 
 # File CV dalam PDF (opsional). Taruh di arsip/ lalu tulis path-nya, mis. "arsip/cv.pdf".
@@ -48,5 +48,5 @@ kontak:
   researchgate: ""
   sinta: ""
   github: "https://github.com/fahertkuze"
-  linkedin: "www.linkedin.com/in/muhammad-farhan-h-6396472b6"
+  linkedin: "https://www.linkedin.com/in/muhammad-farhan-h-6396472b6"
   website: ""
