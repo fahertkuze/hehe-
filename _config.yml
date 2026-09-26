@@ -1,0 +1,52 @@
+# ============================================================
+#  KONFIGURASI SITUS
+#  Ubah nilai di bawah ini sesuai data Anda.
+#  Setelah mengubah file ini, GitHub Pages akan membangun ulang situs
+#  secara otomatis (tunggu ±1 menit).
+# ============================================================
+
+title: "Nama Anda"
+description: "Situs pribadi, CV, dan arsip penelitian terbuka."
+lang: id
+
+# Alamat situs.
+# - Jika repositori bernama  <username>.github.io  → baseurl: ""
+# - Jika repositori bernama lain (mis. "hehe-")      → baseurl: "/hehe-"
+url: "https://fahertkuze.github.io"
+baseurl: "/hehe-"
+
+# Koleksi arsip penelitian: setiap file .md di folder _penelitian/
+# akan menjadi satu halaman dengan tautan permanen yang bisa dibagikan.
+collections:
+  penelitian:
+    output: true
+    permalink: /penelitian/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: penelitian
+    values:
+      layout: penelitian
+
+# Tidak memakai tema bawaan GitHub Pages — tampilan diatur sendiri
+# di assets/css/situs.css.
+theme: null
+
+plugins:
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - cosmos
+  - vendor
+
+# Lisensi bawaan untuk semua karya di arsip (bisa diganti per karya
+# dengan kolom "lisensi" di file penelitian). Kosongkan jika tidak ingin ditampilkan.
+lisensi_bawaan: "CC BY 4.0"

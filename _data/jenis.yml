@@ -1,0 +1,10 @@
+# Jenis karya penelitian yang dikenali. Kunci (kiri) dipakai di kolom
+# "jenis" pada setiap file di _penelitian/. Anda boleh menambah jenis baru.
+jurnal:     { label: "Artikel Jurnal",        bibtex: "article" }
+prosiding:  { label: "Prosiding",             bibtex: "inproceedings" }
+preprint:   { label: "Preprint",              bibtex: "misc" }
+tesis:      { label: "Skripsi / Tesis",       bibtex: "mastersthesis" }
+laporan:    { label: "Laporan Penelitian",    bibtex: "techreport" }
+dataset:    { label: "Dataset",               bibtex: "misc" }
+presentasi: { label: "Presentasi / Poster",   bibtex: "misc" }
+buku:       { label: "Buku / Bab Buku",       bibtex: "book" }

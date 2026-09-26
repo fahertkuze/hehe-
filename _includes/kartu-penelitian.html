@@ -1,0 +1,32 @@
+{%- assign p = include.p -%}
+{%- assign info = site.data.jenis[p.jenis] -%}
+{%- capture teks_cari -%}{{ p.judul }} {{ p.penulis | join: " " }} {{ p.terbitan }} {{ p.kata_kunci | join: " " }} {{ info.label }} {{ p.tahun }} {{ p.abstrak | strip_html }}{%- endcapture -%}
+<article class="karya" data-karya data-jenis="{{ p.jenis }}" data-tahun="{{ p.tahun }}" data-tanggal="{% if p.tanggal %}{{ p.tanggal | date: '%Y%m%d' }}{% else %}{{ p.tahun }}0000{% endif %}" data-judul="{{ p.judul | downcase | escape }}" data-cari="{{ teks_cari | strip_newlines | downcase | escape }}">
+  <div class="karya__tahun">{{ p.tahun }}</div>
+  <div class="karya__isi">
+    <p class="karya__meta">
+      <span class="lencana" data-jenis="{{ p.jenis }}">{{ info.label | default: p.jenis }}</span>
+      {%- if p.terbitan %}<span class="karya__terbitan">{{ p.terbitan }}</span>{% endif %}
+    </p>
+    <h3 class="karya__judul"><a href="{{ p.url | relative_url }}">{{ p.judul }}</a></h3>
+    <p class="karya__penulis">{% include penulis.html daftar=p.penulis %}</p>
+    {%- if include.ringkas and p.abstrak %}
+    <p class="karya__ringkas">{{ p.abstrak | strip_html | truncatewords: 34, "…" }}</p>
+    {%- endif %}
+    <div class="karya__aksi">
+      {%- for b in p.berkas limit: 1 %}
+      {%- assign ext = b.url | split: "." | last | upcase %}
+      <a class="tautan-aksi" href="{% include url.html u=b.url %}" {% unless b.url contains '://' %}download{% endunless %}>{% include ikon.html n="download" %}{{ ext }}</a>
+      {%- endfor %}
+      {%- if p.doi and p.doi != "" %}
+      <a class="tautan-aksi" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">{% include ikon.html n="external" %}DOI</a>
+      {%- endif %}
+      <button class="tautan-aksi" type="button" data-salin-tautan="{{ p.url | absolute_url }}">{% include ikon.html n="link" %}Salin tautan</button>
+      {%- if include.kata_kunci and p.kata_kunci %}
+      <span class="karya__kunci">
+        {%- for k in p.kata_kunci limit: 4 %}<button type="button" class="kunci" data-kata-kunci="{{ k | escape }}">#{{ k }}</button>{% endfor -%}
+      </span>
+      {%- endif %}
+    </div>
+  </div>
+</article>

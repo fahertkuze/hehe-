@@ -1,0 +1,139 @@
+---
+layout: default
+---
+{%- assign jenis_ini = site.data.jenis[page.jenis] -%}
+{%- assign url_penuh = page.url | absolute_url -%}
+{%- capture teks_bagikan -%}{{ page.judul }} — {{ url_penuh }}{%- endcapture -%}
+{%- assign enc_url = url_penuh | url_encode | replace: "+", "%20" -%}
+{%- assign enc_judul = page.judul | url_encode | replace: "+", "%20" -%}
+{%- assign enc_teks = teks_bagikan | url_encode | replace: "+", "%20" -%}
+<article class="wadah detail">
+  <a class="kembali" href="{{ '/penelitian/' | relative_url }}">{% include ikon.html n="arrow-left" %}Arsip Penelitian</a>
+
+  <header class="detail__kepala">
+    <p class="detail__meta">
+      <span class="lencana" data-jenis="{{ page.jenis }}">{{ jenis_ini.label | default: page.jenis }}</span>
+      <span class="mono">{% if page.tanggal %}{{ page.tanggal | date: "%d-%m-%Y" }}{% else %}{{ page.tahun }}{% endif %}</span>
+    </p>
+    <h1 class="detail__judul">{{ page.judul }}</h1>
+    <p class="detail__penulis">{% include penulis.html daftar=page.penulis %}</p>
+    {%- if page.terbitan %}
+    <p class="detail__terbitan">{{ page.terbitan }}</p>
+    {%- endif %}
+
+    <div class="detail__aksi">
+      {%- for b in page.berkas %}
+      {%- assign ext = b.url | split: "." | last | upcase %}
+      <a class="tombol {% if forloop.first %}tombol--utama{% endif %}" href="{% include url.html u=b.url %}" {% unless b.url contains '://' %}download{% endunless %}>
+        {% include ikon.html n="download" %}{{ b.label | default: "Unduh berkas" }}<span class="tombol__ext">{{ ext }}</span>
+      </a>
+      {%- endfor %}
+      <a class="tombol" href="#sitasi">{% include ikon.html n="quote" %}Sitasi</a>
+      <button class="tombol" type="button" data-salin-tautan="{{ url_penuh }}">{% include ikon.html n="link" %}Salin tautan</button>
+      <button class="tombol" type="button" data-bagikan-native hidden>{% include ikon.html n="share" %}Bagikan</button>
+    </div>
+  </header>
+
+  <div class="detail__tubuh">
+    <div class="detail__utama">
+      {%- if page.abstrak %}
+      <section class="detail__bagian">
+        <h2 class="label-bagian">Abstrak</h2>
+        <div class="prosa">{{ page.abstrak | markdownify }}</div>
+      </section>
+      {%- endif %}
+
+      {%- assign isi = content | strip %}
+      {%- if isi != "" %}
+      <section class="detail__bagian">
+        <h2 class="label-bagian">Catatan</h2>
+        <div class="prosa">{{ content }}</div>
+      </section>
+      {%- endif %}
+
+      <section class="detail__bagian sitasi" id="sitasi">
+        <h2 class="label-bagian">Cara mengutip</h2>
+        <div class="sitasi__kotak">
+          <div class="sitasi__tab" role="tablist" aria-label="Format sitasi">
+            <button type="button" role="tab" aria-selected="true" data-format="apa">APA</button>
+            <button type="button" role="tab" aria-selected="false" data-format="bibtex">BibTeX</button>
+          </div>
+          <pre class="sitasi__teks" data-sitasi-teks>{{ page.penulis | join: ", " }} ({{ page.tahun }}). {{ page.judul }}.{% if page.terbitan %} {{ page.terbitan }}.{% endif %}{% if page.doi and page.doi != "" %} https://doi.org/{{ page.doi }}{% else %} {{ url_penuh }}{% endif %}</pre>
+          <button class="tombol tombol--kecil sitasi__salin" type="button" data-salin-sitasi>{% include ikon.html n="copy" %}Salin sitasi</button>
+        </div>
+      </section>
+    </div>
+
+    <aside class="detail__samping">
+      <dl class="metadata">
+        <div><dt>Jenis</dt><dd>{{ jenis_ini.label | default: page.jenis }}</dd></div>
+        <div><dt>Tahun</dt><dd>{{ page.tahun }}</dd></div>
+        {%- if page.terbitan %}<div><dt>Diterbitkan di</dt><dd>{{ page.terbitan }}</dd></div>{% endif %}
+        {%- if page.doi and page.doi != "" %}<div><dt>DOI</dt><dd><a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">{{ page.doi }}</a></dd></div>{% endif %}
+        {%- assign lisensi = page.lisensi | default: site.lisensi_bawaan %}
+        {%- if lisensi and lisensi != "" %}<div><dt>Lisensi</dt><dd>{{ lisensi }}</dd></div>{% endif %}
+      </dl>
+
+      {%- if page.kata_kunci %}
+      <div class="samping__blok">
+        <h3 class="samping__judul">Kata kunci</h3>
+        <ul class="daftar-tag">
+          {%- for k in page.kata_kunci %}
+          <li><a class="tag" href="{{ '/penelitian/' | relative_url }}?q={{ k | url_encode }}">{{ k }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+
+      {%- if page.tautan %}
+      <div class="samping__blok">
+        <h3 class="samping__judul">Tautan terkait</h3>
+        <ul class="daftar-tautan">
+          {%- for t in page.tautan %}
+          <li><a href="{% include url.html u=t.url %}" {% if t.url contains '://' %}target="_blank" rel="noopener"{% endif %}>{% include ikon.html n="external" %}{{ t.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+
+      <div class="samping__blok">
+        <h3 class="samping__judul">Bagikan</h3>
+        <div class="bagikan">
+          <a href="https://wa.me/?text={{ enc_teks }}" target="_blank" rel="noopener" aria-label="Bagikan ke WhatsApp" title="WhatsApp">{% include ikon.html n="whatsapp" %}</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ enc_url }}" target="_blank" rel="noopener" aria-label="Bagikan ke LinkedIn" title="LinkedIn">{% include ikon.html n="linkedin" %}</a>
+          <a href="https://x.com/intent/post?text={{ enc_judul }}&amp;url={{ enc_url }}" target="_blank" rel="noopener" aria-label="Bagikan ke X" title="X (Twitter)">{% include ikon.html n="x" %}</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ enc_url }}" target="_blank" rel="noopener" aria-label="Bagikan ke Facebook" title="Facebook">{% include ikon.html n="facebook" %}</a>
+          <a href="mailto:?subject={{ enc_judul }}&amp;body={{ enc_teks }}" aria-label="Kirim lewat email" title="Email">{% include ikon.html n="email" %}</a>
+          <button type="button" data-salin-tautan="{{ url_penuh }}" aria-label="Salin tautan" title="Salin tautan">{% include ikon.html n="link" %}</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  {%- assign url_ini = page.url %}
+  {%- assign lainnya = site.penelitian | where_exp: "x", "x.url != url_ini" | sort: "tahun" | reverse %}
+  {%- if lainnya.size > 0 %}
+  <section class="lainnya">
+    <h2 class="label-bagian">Penelitian lainnya</h2>
+    <div class="daftar-karya">
+      {%- for p in lainnya limit: 3 %}
+      {% include kartu-penelitian.html p=p %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+</article>
+
+<script type="application/json" id="data-karya">
+{
+  "judul": {{ page.judul | jsonify }},
+  "penulis": {{ page.penulis | jsonify }},
+  "tahun": {{ page.tahun | jsonify }},
+  "jenis": {{ page.jenis | jsonify }},
+  "labelJenis": {{ jenis_ini.label | jsonify }},
+  "bibtex": {{ jenis_ini.bibtex | default: "misc" | jsonify }},
+  "terbitan": {{ page.terbitan | jsonify }},
+  "doi": {{ page.doi | jsonify }},
+  "url": {{ url_penuh | jsonify }}
+}
+</script>
