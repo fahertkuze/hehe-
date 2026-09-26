@@ -23,7 +23,7 @@
 <meta property="og:type" content="{% if page.collection == 'penelitian' %}article{% else %}profile{% endif %}">
 <meta property="og:locale" content="{% if site.lang == 'id' %}id_ID{% else %}en_US{% endif %}">
 {%- if profil.foto != "" and profil.foto %}
-<meta property="og:image" content="{{ profil.foto | absolute_url }}">
+<meta property="og:image" content="{{ profil.foto | absolute_url | replace: ' ', '%20' }}">
 {%- endif %}
 <meta name="twitter:card" content="summary">
 

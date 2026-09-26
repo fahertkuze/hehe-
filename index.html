@@ -24,7 +24,7 @@ title: Home
     </div>
     <div class="pahlawan__potret">
       {%- if profil.foto and profil.foto != "" %}
-      <img src="{{ profil.foto | relative_url }}" alt="Photo of {{ profil.nama | escape }}" width="320" height="400">
+      <img src="{{ profil.foto | relative_url | replace: ' ', '%20' }}" alt="Photo of {{ profil.nama | escape }}" width="320" height="400">
       {%- else %}
       <div class="monogram" aria-hidden="true"><span>{{ kata.first | slice: 0 }}{% if kata.size > 1 %}{{ kata.last | slice: 0 }}{% endif %}</span></div>
       {%- endif %}
