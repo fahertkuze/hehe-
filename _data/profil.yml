@@ -11,7 +11,7 @@ lokasi: "Makassar, Sulawesi Selatan"
 
 # Foto profil: taruh file di assets/img/ lalu tulis namanya, mis. "assets/img/foto.jpg".
 # Jika dikosongkan, akan tampil inisial nama.
-foto: ""
+foto: "assets/img/foto kossmi.jpeg"
 
 # Kalimat singkat di bagian atas Beranda (1–2 kalimat).
 tagline: "to research how the universe works through the principles of physics and astronomy."
