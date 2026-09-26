@@ -16,16 +16,16 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 6 0 obj
-<< /Length 315 >>
+<< /Length 300 >>
 stream
-BT /F2 20 Tf 72 760 Td (Contoh Berkas Arsip) Tj ET
-BT /F1 12 Tf 72 730 Td (Ini adalah berkas PDF contoh untuk situs arsip penelitian.) Tj ET
-BT /F1 12 Tf 72 712 Td (Ganti file ini dengan naskah, poster, atau laporan Anda,) Tj ET
-BT /F1 12 Tf 72 694 Td (lalu perbarui kolom 'berkas' di file _penelitian/*.md.) Tj ET
+BT /F2 20 Tf 72 760 Td (Example Archive File) Tj ET
+BT /F1 12 Tf 72 730 Td (This is a placeholder PDF for the research archive.) Tj ET
+BT /F1 12 Tf 72 712 Td (Replace it with your own paper, poster, or report,) Tj ET
+BT /F1 12 Tf 72 694 Td (then update the 'berkas' field in _penelitian/*.md.) Tj ET
 endstream
 endobj
 7 0 obj
-<< /Title (Contoh Berkas Arsip) >>
+<< /Title (Example Archive File) >>
 endobj
 xref
 0 8
@@ -36,9 +36,9 @@ xref
 0000000257 00000 n 
 0000000327 00000 n 
 0000000402 00000 n 
-0000000767 00000 n 
+0000000752 00000 n 
 trailer
 << /Size 8 /Root 1 0 R /Info 7 0 R >>
 startxref
-817
+803
 %%EOF

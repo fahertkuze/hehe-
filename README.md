@@ -1,17 +1,17 @@
 # Situs Pribadi, CV & Arsip Penelitian
 
-Situs statis untuk **membangun profil pribadi**, menampilkan **CV**, dan **menyimpan arsip
+Situs statis (tampilan berbahasa Inggris) untuk **membangun profil pribadi**, menampilkan **CV**, dan **menyimpan arsip
 penelitian** (makalah, dataset, poster, tesis, dll.) yang bisa dibaca, diunduh, dibagikan,
 dan disitasi oleh publik. Dibangun dengan Jekyll sehingga bisa di-hosting **gratis di
 GitHub Pages**, tanpa server dan tanpa database.
 
 ## Fitur
 
-- **Beranda**: profil singkat, minat penelitian, statistik karya, penelitian pilihan, dan kontak.
+- **Home**: profil singkat, minat penelitian, statistik karya, penelitian pilihan, dan kontak.
 - **CV**: pendidikan, pengalaman, penghargaan, organisasi, keahlian, plus daftar publikasi
-  yang **diambil otomatis** dari arsip. Tombol *Cetak / Simpan PDF* menghasilkan CV rapi siap cetak.
-- **Arsip penelitian**: pencarian cepat, saring per jenis & tahun, urutkan. Hasil penyaringan
-  punya URL sendiri (mis. `/penelitian/?jenis=dataset`) sehingga bisa dibagikan.
+  yang **diambil otomatis** dari arsip. Tombol *Print / Save as PDF* menghasilkan CV rapi siap cetak.
+- **Research** (arsip penelitian): pencarian cepat, saring per jenis & tahun, urutkan. Hasil penyaringan
+  punya URL sendiri (mis. `/research/?jenis=dataset`) sehingga bisa dibagikan.
 - **Halaman per karya** dengan tautan permanen: abstrak, berkas unduhan, DOI, kata kunci,
   tombol bagikan (WhatsApp, LinkedIn, X, Facebook, email, salin tautan), dan
   **sitasi otomatis** dalam format APA & BibTeX.
@@ -58,15 +58,16 @@ Semua bisa diedit langsung dari situs GitHub (klik file → ikon pensil → *Com
   lalu isi `foto: "assets/img/nama-file.jpg"`. Jika kosong, tampil inisial nama.
 - **`_data/cv.yml`**: isi riwayat Anda. Hapus bagian yang tidak diperlukan.
 - **CV dalam PDF** (opsional): unggah ke `arsip/` lalu isi `cv_pdf: "arsip/cv.pdf"`.
-  Tanpa itu pun, pengunjung tetap bisa menekan *Cetak / Simpan PDF* di halaman CV.
+  Tanpa itu pun, pengunjung tetap bisa menekan *Print / Save as PDF* di halaman CV.
 
 ## 3. Menambah penelitian ke arsip
 
 1. Unggah berkas (PDF, CSV, PPTX, …) ke folder **`arsip/`**.
 2. Buat file baru di folder **`_penelitian/`**, misalnya `_penelitian/judul-singkat.md`.
-   Nama file menjadi alamat halamannya: `/penelitian/judul-singkat/`
+   Nama file menjadi alamat halamannya: `/research/judul-singkat/`
    (gunakan huruf kecil dan tanda hubung, tanpa spasi).
-3. Salin templat ini dan isi:
+3. Salin templat ini dan isi (tulis judul, abstrak, dll. dalam bahasa Inggris agar
+   sesuai dengan tampilan situs):
 
 ```yaml
 ---
@@ -79,7 +80,7 @@ tanggal: 2025-05-20        # opsional, untuk urutan yang lebih tepat
 jenis: jurnal              # jurnal | prosiding | preprint | tesis | laporan | dataset | presentasi | buku
 terbitan: "Nama Jurnal, 10(2), 1–15"   # jurnal/konferensi/universitas/penyelenggara
 doi: "10.1234/abcd.2025.001"           # opsional, tanpa https://doi.org/
-unggulan: true             # opsional, tampilkan di Beranda
+unggulan: true             # opsional, tampilkan di halaman Home
 kata_kunci: [kata satu, kata dua]
 abstrak: >
   Tulis abstrak di sini. Boleh beberapa baris.
@@ -95,10 +96,10 @@ lisensi: "CC BY 4.0"       # opsional, jika berbeda dari lisensi bawaan
 (Opsional) Catatan tambahan dalam Markdown: temuan utama, metode, gambar, dll.
 ```
 
-4. *Commit* dan tunggu ±1 menit. Karya langsung muncul di Arsip, Beranda (jika `unggulan`),
+4. *Commit* dan tunggu ±1 menit. Karya langsung muncul di halaman Research, Home (jika `unggulan`),
    dan daftar publikasi di CV.
 
-Hapus file contoh di `_penelitian/` serta `arsip/contoh-*` bila sudah tidak diperlukan.
+Hapus file contoh di `_penelitian/` serta `arsip/example-*` bila sudah tidak diperlukan.
 
 ### Tips arsip terbuka
 
@@ -113,6 +114,10 @@ Hapus file contoh di `_penelitian/` serta `arsip/contoh-*` bila sudah tidak dipe
 - **Jenis karya baru** bisa ditambahkan di `_data/jenis.yml`.
 
 ## 4. Mengubah tampilan
+
+Teks menu dan tombol (bahasa Inggris) ada di `_layouts/`, `_includes/`, `index.html`,
+`research.html`, `cv.html`, dan `assets/js/situs.js`. Label jenis karya ada di `_data/jenis.yml`.
+
 
 Warna diatur di bagian atas `assets/css/situs.css`. Contoh: ubah `--aksen: #0e6b5c;` menjadi
 `--aksen: #1f4e79;` untuk aksen biru (ubah juga nilai `--aksen` pada blok mode gelap).

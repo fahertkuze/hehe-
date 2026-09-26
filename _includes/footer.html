@@ -5,14 +5,14 @@
       <p class="kaki__nama">{{ profil.nama }}</p>
       <p class="kaki__catatan">
         {% include ikon.html n="lock-open" %}
-        <span>Karya di situs ini terbuka untuk publik{% if site.lisensi_bawaan %} dan, kecuali disebutkan lain, dilisensikan <strong>{{ site.lisensi_bawaan }}</strong>{% endif %}.</span>
+        <span>Work on this site is open to the public{% if site.lisensi_bawaan %} and, unless stated otherwise, licensed under <strong>{{ site.lisensi_bawaan }}</strong>{% endif %}.</span>
       </p>
     </div>
     {% include kontak.html kelas="kontak--ringkas" %}
   </div>
   <div class="wadah kaki__bawah">
     <span>© {{ site.time | date: "%Y" }} {{ profil.nama }}</span>
-    <span>Diperbarui {{ site.time | date: "%d-%m-%Y" }}</span>
+    <span>Updated {{ site.time | date: "%B %-d, %Y" }}</span>
   </div>
 </footer>
 <div class="toast" role="status" aria-live="polite" data-toast></div>

@@ -21,7 +21,7 @@
       {%- if p.doi and p.doi != "" %}
       <a class="tautan-aksi" href="https://doi.org/{{ p.doi }}" target="_blank" rel="noopener">{% include ikon.html n="external" %}DOI</a>
       {%- endif %}
-      <button class="tautan-aksi" type="button" data-salin-tautan="{{ p.url | absolute_url }}">{% include ikon.html n="link" %}Salin tautan</button>
+      <button class="tautan-aksi" type="button" data-salin-tautan="{{ p.url | absolute_url }}">{% include ikon.html n="link" %}Copy link</button>
       {%- if include.kata_kunci and p.kata_kunci %}
       <span class="karya__kunci">
         {%- for k in p.kata_kunci limit: 4 %}<button type="button" class="kunci" data-kata-kunci="{{ k | escape }}">#{{ k }}</button>{% endfor -%}

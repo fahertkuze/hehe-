@@ -17,9 +17,9 @@ kelas_body: halaman-cv
     </div>
     <div class="cv__aksi">
       {%- if profil.cv_pdf and profil.cv_pdf != "" %}
-      <a class="tombol tombol--utama" href="{{ profil.cv_pdf | relative_url }}" download>{% include ikon.html n="download" %}Unduh CV (PDF)</a>
+      <a class="tombol tombol--utama" href="{{ profil.cv_pdf | relative_url }}" download>{% include ikon.html n="download" %}Download CV (PDF)</a>
       {%- endif %}
-      <button class="tombol {% unless profil.cv_pdf and profil.cv_pdf != '' %}tombol--utama{% endunless %}" type="button" data-cetak>{% include ikon.html n="printer" %}Cetak / Simpan PDF</button>
+      <button class="tombol {% unless profil.cv_pdf and profil.cv_pdf != '' %}tombol--utama{% endunless %}" type="button" data-cetak>{% include ikon.html n="printer" %}Print / Save as PDF</button>
     </div>
     <ul class="cv__kontak">
       {%- if profil.lokasi %}<li>{% include ikon.html n="pin" %}{{ profil.lokasi }}</li>{% endif %}
@@ -31,12 +31,12 @@ kelas_body: halaman-cv
 
   {%- if profil.bio %}
   <section class="cv__bagian">
-    <h2 class="cv__judul">Profil</h2>
+    <h2 class="cv__judul">Profile</h2>
     <div class="cv__isi prosa">{{ profil.bio | markdownify }}</div>
   </section>
   {%- endif %}
 
-  {%- assign bagian_cv = "pendidikan:Pendidikan|pengalaman:Pengalaman|penghargaan:Penghargaan & Hibah|organisasi:Organisasi" | split: "|" -%}
+  {%- assign bagian_cv = "pendidikan:Education|pengalaman:Experience|penghargaan:Awards & Grants|organisasi:Memberships" | split: "|" -%}
   {%- for pasangan in bagian_cv %}
   {%- assign b = pasangan | split: ":" %}
   {%- assign kunci = b[0] %}
@@ -65,9 +65,9 @@ kelas_body: halaman-cv
 
   {%- if site.penelitian.size > 0 %}
   <section class="cv__bagian">
-    <h2 class="cv__judul">Publikasi &amp; Karya</h2>
+    <h2 class="cv__judul">Publications &amp; Work</h2>
     <div class="cv__isi">
-      <p class="cv__catatan">Daftar ini diambil otomatis dari <a href="{{ '/penelitian/' | relative_url }}">arsip penelitian</a>.</p>
+      <p class="cv__catatan">This list is generated automatically from the <a href="{{ '/research/' | relative_url }}">research archive</a>.</p>
       {%- for j in site.data.jenis %}
       {%- assign karya = site.penelitian | where: "jenis", j[0] | sort: "tahun" | reverse %}
       {%- if karya.size > 0 %}
@@ -89,7 +89,7 @@ kelas_body: halaman-cv
 
   {%- if cv.keahlian %}
   <section class="cv__bagian">
-    <h2 class="cv__judul">Keahlian</h2>
+    <h2 class="cv__judul">Skills</h2>
     <dl class="cv__isi cv-keahlian">
       {%- for g in cv.keahlian %}
       <div><dt>{{ g.kategori }}</dt><dd>{{ g.daftar | join: " · " }}</dd></div>
@@ -98,5 +98,5 @@ kelas_body: halaman-cv
   </section>
   {%- endif %}
 
-  <p class="cv__diperbarui">Diperbarui {{ site.time | date: "%d-%m-%Y" }}</p>
+  <p class="cv__diperbarui">Last updated {{ site.time | date: "%B %-d, %Y" }}</p>
 </article>

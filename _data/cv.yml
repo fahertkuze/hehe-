@@ -1,57 +1,47 @@
 # ============================================================
 #  CV — setiap bagian akan tampil di halaman CV (urutan sesuai file ini).
+#  Semua isi di bawah masih CONTOH/templat: ganti teks di dalam tanda
+#  kutip dengan data Anda (dalam bahasa Inggris).
 #  Hapus bagian yang tidak diperlukan, atau tambah item baru dengan
-#  menyalin pola yang sama.
+#  menyalin pola yang sama (perhatikan jumlah spasi di awal baris).
 #
 #  Kolom umum per item:
 #    judul     : posisi / gelar / nama penghargaan
 #    tempat    : institusi / penyelenggara
-#    periode   : teks bebas, mis. "2021 – sekarang"
+#    periode   : teks bebas, mis. "2021 – present"
 #    keterangan: (opsional) penjelasan singkat
 #    poin      : (opsional) daftar butir
 # ============================================================
 
 pendidikan:
-  - judul: "Magister Sains (M.Sc.), Ilmu Lingkungan"
-    tempat: "Nama Universitas"
-    periode: "2019 – 2021"
-    keterangan: "Tesis: Pemodelan spasial risiko banjir berbasis data satelit."
-  - judul: "Sarjana Sains (S.Si.), Statistika"
-    tempat: "Nama Universitas"
-    periode: "2015 – 2019"
-    keterangan: "Lulus dengan predikat Cum Laude."
+  - judul: "Program or Degree Name"
+    tempat: "School or University Name"
+    periode: "20XX – present"
+    keterangan: "Optional note, e.g. thesis title or honors."
 
 pengalaman:
-  - judul: "Peneliti"
-    tempat: "Nama Lembaga Penelitian"
-    periode: "2022 – sekarang"
+  - judul: "Position Title"
+    tempat: "Organization Name"
+    periode: "20XX – present"
     poin:
-      - "Memimpin proyek pemetaan risiko banjir di tiga provinsi."
-      - "Mengembangkan pipeline data terbuka untuk pemantauan kualitas air."
-  - judul: "Asisten Dosen"
-    tempat: "Nama Universitas"
-    periode: "2019 – 2021"
-    poin:
-      - "Mengajar praktikum Analisis Data Spasial dan Statistika Dasar."
+      - "Describe a key responsibility or achievement."
+      - "Add another one here, or delete this line."
 
 penghargaan:
-  - judul: "Hibah Penelitian Dosen Pemula"
-    tempat: "Kemendikbudristek"
-    periode: "2023"
-  - judul: "Presentasi Terbaik"
-    tempat: "Seminar Nasional Sains Data"
-    periode: "2022"
+  - judul: "Award, Competition, or Grant Name"
+    tempat: "Awarding Institution"
+    periode: "20XX"
 
 organisasi:
-  - judul: "Anggota"
-    tempat: "Ikatan Peneliti Lingkungan Indonesia"
-    periode: "2020 – sekarang"
+  - judul: "Member"
+    tempat: "Organization Name"
+    periode: "20XX – present"
 
 # Keahlian dikelompokkan per kategori.
 keahlian:
-  - kategori: "Analisis Data"
-    daftar: ["Python", "R", "SQL", "Statistika Spasial"]
-  - kategori: "Perangkat"
-    daftar: ["QGIS", "Google Earth Engine", "Git", "LaTeX"]
-  - kategori: "Bahasa"
-    daftar: ["Indonesia (penutur asli)", "Inggris (profesional)"]
+  - kategori: "Research"
+    daftar: ["Skill one", "Skill two", "Skill three"]
+  - kategori: "Tools"
+    daftar: ["Tool one", "Tool two"]
+  - kategori: "Languages"
+    daftar: ["Indonesian (native)", "English"]

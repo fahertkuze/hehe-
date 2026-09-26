@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Beranda
+title: Home
 ---
 {%- assign profil = site.data.profil -%}
 {%- assign cv = site.data.cv -%}
@@ -17,14 +17,14 @@ title: Beranda
       <h1 class="pahlawan__nama">{{ profil.nama }}{% if profil.gelar and profil.gelar != "" %}<span class="pahlawan__gelar">, {{ profil.gelar }}</span>{% endif %}</h1>
       <p class="pahlawan__tagline">{{ profil.tagline }}</p>
       <div class="pahlawan__aksi">
-        <a class="tombol tombol--utama" href="{{ '/penelitian/' | relative_url }}">Jelajahi arsip penelitian{% include ikon.html n="arrow-right" %}</a>
-        <a class="tombol" href="{{ '/cv/' | relative_url }}">Lihat CV</a>
+        <a class="tombol tombol--utama" href="{{ '/research/' | relative_url }}">Explore my research{% include ikon.html n="arrow-right" %}</a>
+        <a class="tombol" href="{{ '/cv/' | relative_url }}">View CV</a>
       </div>
       {% include kontak.html kelas="kontak--ikon" %}
     </div>
     <div class="pahlawan__potret">
       {%- if profil.foto and profil.foto != "" %}
-      <img src="{{ profil.foto | relative_url }}" alt="Foto {{ profil.nama | escape }}" width="320" height="400">
+      <img src="{{ profil.foto | relative_url }}" alt="Photo of {{ profil.nama | escape }}" width="320" height="400">
       {%- else %}
       <div class="monogram" aria-hidden="true"><span>{{ kata.first | slice: 0 }}{% if kata.size > 1 %}{{ kata.last | slice: 0 }}{% endif %}</span></div>
       {%- endif %}
@@ -39,25 +39,25 @@ title: Beranda
   <div class="wadah bagian__grid">
     <header class="bagian__kepala">
       <p class="nomor">01</p>
-      <h2>Tentang</h2>
+      <h2>About</h2>
     </header>
     <div class="bagian__isi">
       <div class="prosa prosa--besar">{{ profil.bio | markdownify }}</div>
       {%- if profil.minat %}
-      <h3 class="sub">Minat penelitian</h3>
+      <h3 class="sub">Research interests</h3>
       <ul class="daftar-tag">
-        {%- for m in profil.minat %}<li><a class="tag" href="{{ '/penelitian/' | relative_url }}?q={{ m | url_encode }}">{{ m }}</a></li>{% endfor %}
+        {%- for m in profil.minat %}<li><a class="tag" href="{{ '/research/' | relative_url }}?q={{ m | url_encode }}">{{ m }}</a></li>{% endfor %}
       </ul>
       {%- endif %}
       <dl class="angka">
-        <div><dt>Karya di arsip</dt><dd>{{ site.penelitian | size }}</dd></div>
+        <div><dt>Works in archive</dt><dd>{{ site.penelitian | size }}</dd></div>
         {%- assign n_pub = 0 -%}
         {%- for p in site.penelitian -%}{%- if p.jenis == "jurnal" or p.jenis == "prosiding" or p.jenis == "buku" -%}{%- assign n_pub = n_pub | plus: 1 -%}{%- endif -%}{%- endfor %}
-        <div><dt>Publikasi</dt><dd>{{ n_pub }}</dd></div>
+        <div><dt>Publications</dt><dd>{{ n_pub }}</dd></div>
         {%- assign n_data = site.penelitian | where: "jenis", "dataset" | size %}
-        <div><dt>Dataset terbuka</dt><dd>{{ n_data }}</dd></div>
+        <div><dt>Open datasets</dt><dd>{{ n_data }}</dd></div>
         {%- assign tahun_awal = site.penelitian | map: "tahun" | sort | first %}
-        {%- if tahun_awal %}<div><dt>Aktif sejak</dt><dd>{{ tahun_awal }}</dd></div>{% endif %}
+        {%- if tahun_awal %}<div><dt>Active since</dt><dd>{{ tahun_awal }}</dd></div>{% endif %}
       </dl>
     </div>
   </div>
@@ -67,8 +67,8 @@ title: Beranda
   <div class="wadah bagian__grid">
     <header class="bagian__kepala">
       <p class="nomor">02</p>
-      <h2>Penelitian pilihan</h2>
-      <a class="tautan-panah" href="{{ '/penelitian/' | relative_url }}">Semua karya ({{ site.penelitian | size }}){% include ikon.html n="arrow-right" %}</a>
+      <h2>Selected research</h2>
+      <a class="tautan-panah" href="{{ '/research/' | relative_url }}">All work ({{ site.penelitian | size }}){% include ikon.html n="arrow-right" %}</a>
     </header>
     <div class="bagian__isi">
       <div class="daftar-karya">
@@ -84,13 +84,13 @@ title: Beranda
   <div class="wadah bagian__grid">
     <header class="bagian__kepala">
       <p class="nomor">03</p>
-      <h2>Riwayat singkat</h2>
-      <a class="tautan-panah" href="{{ '/cv/' | relative_url }}">CV lengkap{% include ikon.html n="arrow-right" %}</a>
+      <h2>Background</h2>
+      <a class="tautan-panah" href="{{ '/cv/' | relative_url }}">Full CV{% include ikon.html n="arrow-right" %}</a>
     </header>
     <div class="bagian__isi ringkas-cv">
       {%- if cv.pengalaman %}
       <div>
-        <h3 class="sub">Pengalaman</h3>
+        <h3 class="sub">Experience</h3>
         <ol class="linimasa">
           {%- for x in cv.pengalaman limit: 3 %}
           <li><span class="linimasa__periode">{{ x.periode }}</span><strong>{{ x.judul }}</strong><span class="linimasa__tempat">{{ x.tempat }}</span></li>
@@ -100,7 +100,7 @@ title: Beranda
       {%- endif %}
       {%- if cv.pendidikan %}
       <div>
-        <h3 class="sub">Pendidikan</h3>
+        <h3 class="sub">Education</h3>
         <ol class="linimasa">
           {%- for x in cv.pendidikan limit: 3 %}
           <li><span class="linimasa__periode">{{ x.periode }}</span><strong>{{ x.judul }}</strong><span class="linimasa__tempat">{{ x.tempat }}</span></li>
@@ -114,8 +114,8 @@ title: Beranda
 
 <section class="ajakan">
   <div class="wadah ajakan__isi">
-    <h2>Tertarik berkolaborasi?</h2>
-    <p>Saya terbuka untuk kolaborasi penelitian, diskusi, maupun permintaan data. Silakan hubungi saya.</p>
+    <h2>Interested in working together?</h2>
+    <p>I'm open to research collaborations, discussions, and data requests. Feel free to get in touch.</p>
     {%- if profil.kontak.email and profil.kontak.email != "" %}
     <a class="tombol tombol--utama" href="mailto:{{ profil.kontak.email }}">{% include ikon.html n="email" %}{{ profil.kontak.email }}</a>
     {%- endif %}

@@ -1,7 +1,7 @@
 /* ==========================================================
-   Skrip situs: tema, salin/bagikan tautan, sitasi otomatis,
-   dan pencarian + penyaringan arsip penelitian.
-   Tanpa pustaka eksternal.
+   Site script: theme toggle, copy/share links, automatic
+   citations, and search + filtering for the research archive.
+   No external libraries.
    ========================================================== */
 (function () {
   "use strict";
@@ -58,8 +58,8 @@
       var t = ev.target.closest("[data-salin-tautan]");
       if (!t) return;
       salin(t.getAttribute("data-salin-tautan")).then(
-        function () { toast("Tautan disalin — siap dibagikan"); },
-        function () { toast("Gagal menyalin tautan"); }
+        function () { toast("Link copied — ready to share"); },
+        function () { toast("Couldn't copy the link"); }
       );
     });
 
@@ -117,7 +117,7 @@
     bagian.push((p ? titikAkhir(p) + " " : "") + "(" + d.tahun + ").");
     var judul = String(d.judul).trim();
     if (d.jenis === "dataset") judul += " [Data set]";
-    else if (d.jenis === "presentasi") judul += " [Presentasi]";
+    else if (d.jenis === "presentasi") judul += " [Presentation]";
     else if (d.jenis === "preprint") judul += " [Preprint]";
     bagian.push(titikAkhir(judul));
     if (d.terbitan) bagian.push(titikAkhir(d.terbitan));
@@ -127,7 +127,7 @@
 
   function buatBibtex(d) {
     var pertama = (d.penulis && d.penulis[0]) ? String(d.penulis[0]).trim().split(/\s+/).pop() : "anon";
-    var kata = String(d.judul).split(/\s+/).map(ascii).filter(function (w) { return w.length > 3; })[0] || "karya";
+    var kata = String(d.judul).split(/\s+/).map(ascii).filter(function (w) { return w.length > 3; })[0] || "work";
     var kunci = ascii(pertama) + d.tahun + kata;
     var jenis = d.bibtex || "misc";
     var tempat = {
@@ -177,8 +177,8 @@
     if (tombol) {
       tombol.addEventListener("click", function () {
         salin(format[aktif]).then(
-          function () { toast(aktif === "apa" ? "Sitasi APA disalin" : "BibTeX disalin"); },
-          function () { toast("Gagal menyalin"); }
+          function () { toast(aktif === "apa" ? "APA citation copied" : "BibTeX copied"); },
+          function () { toast("Couldn't copy"); }
         );
       });
     }
@@ -213,7 +213,7 @@
     };
 
     function bandingkan(a, b) {
-      if (keadaan.urut === "judul") return a.getAttribute("data-judul").localeCompare(b.getAttribute("data-judul"), "id");
+      if (keadaan.urut === "judul") return a.getAttribute("data-judul").localeCompare(b.getAttribute("data-judul"), "en");
       var x = a.getAttribute("data-tanggal"), y = b.getAttribute("data-tanggal");
       return keadaan.urut === "lama" ? x.localeCompare(y) : y.localeCompare(x);
     }
@@ -250,7 +250,10 @@
       }
 
       var disaring = keadaan.q || keadaan.jenis || keadaan.tahun;
-      jumlah.textContent = disaring ? tampil + " dari " + kartu.length + " karya" : kartu.length + " karya";
+      var kata_karya = function (n) { return n === 1 ? " work" : " works"; };
+      jumlah.textContent = disaring
+        ? tampil + " of " + kartu.length + kata_karya(kartu.length)
+        : kartu.length + kata_karya(kartu.length);
       if (kosong) kosong.hidden = tampil !== 0;
 
       if (perbaruiUrl) {

@@ -15,20 +15,20 @@
 <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121413" media="(prefers-color-scheme: dark)">
 
-<!-- Pratinjau saat tautan dibagikan (WhatsApp, LinkedIn, X, dll.) -->
+<!-- Link previews (WhatsApp, LinkedIn, X, etc.) -->
 <meta property="og:site_name" content="{{ profil.nama | default: site.title | escape }}">
 <meta property="og:title" content="{{ judul_halaman | default: profil.nama | escape }}">
 <meta property="og:description" content="{{ deskripsi | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:type" content="{% if page.collection == 'penelitian' %}article{% else %}profile{% endif %}">
-<meta property="og:locale" content="id_ID">
+<meta property="og:locale" content="{% if site.lang == 'id' %}id_ID{% else %}en_US{% endif %}">
 {%- if profil.foto != "" and profil.foto %}
 <meta property="og:image" content="{{ profil.foto | absolute_url }}">
 {%- endif %}
 <meta name="twitter:card" content="summary">
 
 {%- if page.collection == "penelitian" %}
-<!-- Meta tag Google Scholar (Highwire Press) agar karya mudah diindeks -->
+<!-- Google Scholar (Highwire Press) tags so works can be indexed -->
 <meta name="citation_title" content="{{ page.judul | escape }}">
 {%- for a in page.penulis %}
 <meta name="citation_author" content="{{ a | escape }}">
@@ -55,7 +55,7 @@
 {%- if page.kata_kunci %}
 <meta name="citation_keywords" content="{{ page.kata_kunci | join: '; ' | escape }}">
 {%- endif %}
-<meta name="citation_language" content="{{ page.bahasa | default: 'id' }}">
+<meta name="citation_language" content="{{ page.bahasa | default: site.lang | default: 'en' }}">
 <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
 {%- endif %}
 
@@ -65,7 +65,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="{{ '/assets/css/situs.css' | relative_url }}">
 <script>
-  /* Terapkan tema (terang/gelap) sebelum halaman digambar agar tidak berkedip. */
+  /* Apply the saved light/dark theme before first paint to avoid a flash. */
   (function () {
     try {
       var t = localStorage.getItem("tema");

@@ -103,7 +103,7 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
 p { margin: 0 0 1em; }
 a { color: var(--aksen); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }

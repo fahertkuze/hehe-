@@ -1,8 +1,8 @@
 {%- comment -%}
-  Daftar ikon tautan kontak. Parameter opsional: kelas="..."
+  Contact links with icons. Optional parameter: kelas="..."
 {%- endcomment -%}
 {%- assign k = site.data.profil.kontak -%}
-{%- assign label_kontak = "email:Email|orcid:ORCID|scholar:Google Scholar|researchgate:ResearchGate|sinta:SINTA|github:GitHub|linkedin:LinkedIn|website:Situs web" | split: "|" -%}
+{%- assign label_kontak = "email:Email|orcid:ORCID|scholar:Google Scholar|researchgate:ResearchGate|sinta:SINTA|github:GitHub|linkedin:LinkedIn|website:Website" | split: "|" -%}
 <ul class="kontak {{ include.kelas }}">
   {%- for pasangan in label_kontak -%}
     {%- assign bagian = pasangan | split: ":" -%}
